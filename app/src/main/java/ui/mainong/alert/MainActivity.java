@@ -1,12 +1,11 @@
 package ui.mainong.alert;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import ui.mainong.alert.codec.AlertType;
+import androidx.appcompat.app.AppCompatActivity;
+
 import ui.mainong.alert.helper.AlertListener;
 import ui.mainong.pop.Pop;
 
@@ -55,37 +54,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_success:
-                new Alert(this, AlertType.SUCCESS,"Success", "This is a success alert dialog")
-                        .show();
+                Alert.success(this,"Success", "This is a success alert dialog");
 
                 break;
 
             case R.id.btn_info:
-                new Alert(this, AlertType.INFO,"Info", "This is an info alert dialog")
-                        .show();
+                Alert.info(this,"Info", "This is an info alert dialog");
                 break;
 
             case R.id.btn_warn:
-                new Alert(this, AlertType.WARNING,"Warning", "This is a warning alert dialog")
-                        .show();
+                Alert.warn(this,"Warning", "This is a warning alert dialog");
                 break;
 
             case R.id.btn_error:
-                new Alert(this, AlertType.ERROR,"Error", "This is an error alert dialog")
-                        .show();
+                Alert.error(this,"Error", "This is an error alert dialog");
                 break;
 
             case R.id.btn_confirm:
-                Alert dialog = new Alert(this, AlertType.CONFIRM
-                        , "Confirm", "This is a confirmation dialog");
-
-                dialog.setOnAlertListener(new AlertListener() {
+                Alert.confirm(this, "Confirm", "This is a confirmation dialog")
+                .setOnAlertListener(new AlertListener() {
                     @Override
                     public void confirm() {
-                        Pop.info(MainActivity.this, "Success");
+                        Pop.success(MainActivity.this, "Confirm Dialog");
                     }
-                });
-                dialog.show();
+                })
+                .show();
+
+                break;
         }
     }
 }

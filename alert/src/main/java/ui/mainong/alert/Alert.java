@@ -34,12 +34,11 @@ public class Alert extends Dialog implements View.OnClickListener {
     private TextView txtAlertTitle;
     private TextView txtAlertMessage;
 
-
-    public Alert(@NonNull Context context, @NonNull AlertType type, @NonNull String title, @NonNull String message){
-        this(context, type, title, message, DEFAULT_THEME);
+    private Alert(Context context, AlertType type, String title, String message){
+       this(context, AlertType.SUCCESS, title, message, DEFAULT_THEME);
     }
 
-    public Alert(Context context, AlertType type, String title, String message, int themeResId){
+    private Alert(Context context, AlertType type, String title, String message, int themeResId){
         super(context, themeResId);
 
         this.context = context;
@@ -186,7 +185,51 @@ public class Alert extends Dialog implements View.OnClickListener {
         super.setOnDismissListener(listener);
     }
 
-    public void setOnAlertListener(AlertListener mListener) {
+    public Alert setOnAlertListener(AlertListener mListener) {
         this.mListener = mListener;
+        return this;
     }
+
+
+    public static void success(@NonNull Context context, @NonNull String title, @NonNull String message){
+        new Alert(context, AlertType.SUCCESS, title, message, DEFAULT_THEME).show();
+    }
+
+    public static void success(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
+        new Alert(context, AlertType.SUCCESS, title, message, themeResId).show();
+    }
+
+    public static void info(@NonNull Context context, @NonNull String title, @NonNull String message){
+        new Alert(context, AlertType.INFO, title, message, DEFAULT_THEME).show();
+    }
+
+    public static void info(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
+        new Alert(context, AlertType.INFO, title, message, themeResId).show();
+    }
+
+    public static void warn(@NonNull Context context, @NonNull String title, @NonNull String message){
+        new Alert(context, AlertType.WARNING, title, message, DEFAULT_THEME).show();
+    }
+
+    public static void warn(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
+        new Alert(context, AlertType.WARNING, title, message, themeResId).show();
+    }
+
+    public static void error(@NonNull Context context, @NonNull String title, @NonNull String message){
+        new Alert(context, AlertType.WARNING, title, message, DEFAULT_THEME).show();
+    }
+
+    public static void error(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
+        new Alert(context, AlertType.WARNING, title, message, themeResId).show();
+    }
+
+    public static Alert confirm(@NonNull Context context, @NonNull String title, @NonNull String message){
+        return new Alert(context, AlertType.CONFIRM, title, message, DEFAULT_THEME);
+    }
+
+    public static Alert confirm(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
+        return new Alert(context, AlertType.CONFIRM, title, message, themeResId);
+    }
+
+
 }
