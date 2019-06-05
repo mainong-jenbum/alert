@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_success:
                 Alert.success(this,"Success", "This is a success alert dialog");
-
                 break;
 
             case R.id.btn_info:

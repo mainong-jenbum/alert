@@ -216,11 +216,11 @@ public class Alert extends Dialog implements View.OnClickListener {
     }
 
     public static void error(@NonNull Context context, @NonNull String title, @NonNull String message){
-        new Alert(context, AlertType.WARNING, title, message, DEFAULT_THEME).show();
+        new Alert(context, AlertType.ERROR, title, message, DEFAULT_THEME).show();
     }
 
     public static void error(@NonNull Context context, @NonNull String title, @NonNull String message, int themeResId){
-        new Alert(context, AlertType.WARNING, title, message, themeResId).show();
+        new Alert(context, AlertType.ERROR, title, message, themeResId).show();
     }
 
     public static Alert confirm(@NonNull Context context, @NonNull String title, @NonNull String message){
